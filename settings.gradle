@@ -1,1 +1,3 @@
-include ':app', ':common', ':app-fast'
+include(':app')
+include(':app-fast')
+include (':libraries:common')
