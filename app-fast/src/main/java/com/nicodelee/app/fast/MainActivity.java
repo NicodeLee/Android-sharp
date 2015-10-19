@@ -1,4 +1,4 @@
-package com.nicodelee.sharp;
+package com.nicodelee.app.fast;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             .setAction("Action", null)
             .show();
-
-
-
       }
     });
   }
