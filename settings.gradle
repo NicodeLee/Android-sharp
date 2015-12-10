@@ -1,3 +1,4 @@
+include(':sharp-base')
 include(':app')
 include(':app-fast')
-include (':libraries:common')
+include(':libraries:common')
