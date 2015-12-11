@@ -44,11 +44,11 @@
 		        android:id="@+id/progressBarTwo"
 		        android:layout_width="150dp"
 		        android:layout_height="150dp"
-		        ProgressWheel:pwTextColor="#222222"
+		        ProgressWheel:pwTextColor="@color/pinkColor"
 		        ProgressWheel:pwTextSize="14sp"
-		        ProgressWheel:pwRimColor="#44000000"
+		        ProgressWheel:pwRimColor="@color/white"
 		        ProgressWheel:pwBarLength="60dp"
-		        ProgressWheel:pwBarColor="#339BB9"
+		        ProgressWheel:pwBarColor="@color/babyBlueColor"
 		        ProgressWheel:pwBarWidth="25dp"
 		        ProgressWheel:pwRimWidth="25dp"
 		        ProgressWheel:pwSpinSpeed="3dp"/>
@@ -62,7 +62,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Todd Davies - 2012"
+        android:text="NicodeLee- 2015"
         android:textColor="#000"
         android:id="@+id/textView" />
 

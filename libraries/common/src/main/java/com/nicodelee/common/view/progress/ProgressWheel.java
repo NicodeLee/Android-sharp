@@ -17,6 +17,8 @@ import com.nicodelee.common.R;
  * @author Todd Davies
  *         <p/>
  *         See MIT-LICENSE.txt for licence details
+ *
+ * @link <a href="https://github.com/Todd-Davies/ProgressWheel">
  */
 public class ProgressWheel extends View {
 
