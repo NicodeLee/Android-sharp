@@ -16,7 +16,7 @@ public class DataGenerator {
   public static List<ItemMod> generateDemos(){
     List<ItemMod> result = new ArrayList<>();
     for (Demo demo: Demo.values()){
-      result.add(new ItemMod(demo.title,demo.desc));
+      result.add(new ItemMod(demo.title,demo.desc,demo.clssName));
     }
     return result;
   }

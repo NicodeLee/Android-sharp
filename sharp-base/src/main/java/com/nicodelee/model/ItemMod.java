@@ -10,10 +10,12 @@ package com.nicodelee.model;
 public class ItemMod {
   private String title;
   private String Desc;
+  private Class<?> className;
 
-  public ItemMod(String title,String desc){
+  public ItemMod(String title,String desc,Class<?> className){
     this.title = title;
     this.Desc = desc;
+    this.className = className;
   }
 
   public String getTitle() {
@@ -32,4 +34,11 @@ public class ItemMod {
     Desc = desc;
   }
 
+  public Class<?> getClassName() {
+    return className;
+  }
+
+  public void setClassName(Class<?> className) {
+    this.className = className;
+  }
 }
