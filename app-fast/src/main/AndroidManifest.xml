@@ -30,6 +30,16 @@
             android:name="android.intent.action.MAIN"/>
       </intent-filter>
     </activity>
+
+    <activity android:name="com.nicodelee.ui.PtrHeadActivity">
+      <intent-filter>
+        <category
+            android:name="android.intent.category.DEFAULT"/>
+        <action
+            android:name="android.intent.action.MAIN"/>
+      </intent-filter>
+    </activity>
+
   </application>
 
 </manifest>
