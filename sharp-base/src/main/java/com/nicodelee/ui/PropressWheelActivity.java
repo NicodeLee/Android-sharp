@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import com.nicodelee.base.BaseActivity;
 import com.nicodelee.common.view.progress.ProgressWheel;
 import com.nicodelee.sharp.R;
 import java.util.Random;
@@ -18,7 +19,7 @@ import java.util.Random;
  * Created by NocodeLee on 15/12/10.
  * Email：lirizhilirizhi@163.com
  */
-public class PropressWheelActivity extends AppCompatActivity {
+public class PropressWheelActivity extends BaseActivity{
   private ProgressWheel pwOne;
   private boolean wasSpinning = false;
   private SeekBar seekBarProgress;
@@ -26,7 +27,6 @@ public class PropressWheelActivity extends AppCompatActivity {
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.progress_wheel_activity);
     pwOne = (ProgressWheel) findViewById(R.id.progressBarTwo);
     seekBarProgress = (SeekBar) findViewById(R.id.progressAmount);
     btnSpin = (Button) findViewById(R.id.btn_spin);
@@ -46,6 +46,14 @@ public class PropressWheelActivity extends AppCompatActivity {
         styleRandom(pwOne, getBaseContext());
       }
     });
+  }
+
+  @Override protected int getLayoutResId() {
+    return R.layout.progress_wheel_activity;
+  }
+
+  @Override protected CharSequence getTitleName() {
+    return "PropressWheel";
   }
 
   @Override public void onPause() {

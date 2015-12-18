@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/menu_meituan"
-        android:title="美团" />
+  <item
+      android:id="@+id/menu_meituan"
+      android:title="美团"/>
 
-    <item android:id="@+id/menu_jd"
-        android:title="京东"/>
+  <item android:id="@+id/menu_jd"
+      android:title="京东"/>
 
-    <item android:id="@+id/menu_wind"
-        android:title="小风车"/>
+  <item android:id="@+id/menu_wind"
+      android:title="小风车"/>
+
+  <item android:id="@+id/menu_defult"
+      android:title="默认(美化)"/>
+
+  <item android:id="@+id/menu_material"
+      android:title="MaterialHeader(官方)"/>
+
+  <item android:id="@+id/menu_storehouse"
+      android:title="StoreHouseHeader(官方)"/>
+
+  <item android:id="@+id/menu_rentalssun"
+      android:title="RentalsSunHeader(官方)"/>
+
 </menu>

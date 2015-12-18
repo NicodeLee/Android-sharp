@@ -8,7 +8,7 @@
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:supportsRtl="true"
-      android:theme="@style/AppTheme"
+      android:theme="@style/AppTheme.NoActionBar"
   >
     <activity
         android:name=".ui.MainActivity"
@@ -32,7 +32,6 @@
     </activity>
 
     <activity android:name="com.nicodelee.ui.PtrHeadActivity"
-        android:theme="@style/AppTheme.NoActionBar"
     >
       <intent-filter>
         <category

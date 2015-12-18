@@ -5,16 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 >
-  <include layout="@layout/common_toolbar" />
+  <include layout="@layout/common_toolbar"/>
 
   <in.srain.cube.views.ptr.PtrClassicFrameLayout
       xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
       android:id="@+id/ptr_frame"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="#fff"
-      cube_ptr:ptr_duration_to_close="100"
-      cube_ptr:ptr_duration_to_close_header="600"
+      android:background="@color/white"
+      cube_ptr:ptr_duration_to_close="150"
+      cube_ptr:ptr_duration_to_close_header="800"
       cube_ptr:ptr_keep_header_when_refresh="true"
       cube_ptr:ptr_pull_to_fresh="false"
       cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
@@ -24,26 +24,30 @@
         android:id="@+id/ptr_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/turquoiseColor"
+        android:background="@color/skyBlueColor"
         android:textColor="@color/white"
-        android:text="喜不喜欢这个头部"
+        android:text="喜欢这个下拉头部?"
         android:gravity="center"
         android:textSize="28sp"
     />
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
   </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 </LinearLayout>
 
 
-
-<!--
-作为自定义控件， UltraPTR 有 8 个自定义属性。
-ptr_header，设置头部 id。
-ptr_content，设置内容 id。
-ptr_resistance，阻尼系数，默认: 1.7f，越大，感觉下拉时越吃力。
-ptr_ratio_of_header_height_to_refresh，触发刷新时移动的位置比例，默认，1.2f，移动达到头部高度 1.2 倍时可触发刷新操作。
-ptr_duration_to_close，回弹延时，默认 200ms，回弹到刷新高度所用时间。
-ptr_duration_to_close_header，头部回弹时间，默认 1000ms。
-ptr_pull_to_fresh，刷新是否保持头部，默认值 true。
-ptr_keep_header_when_refresh，下拉刷新 / 释放刷新，默认为释放刷新。
--->
+    <!--
+    作为自定义控件， UltraPTR 有 8 个自定义属性。
+    ptr_header，设置头部 id。
+    ptr_content，设置内容 id。
+    ptr_resistance，阻尼系数，默认: 1.7f，越大，感觉下拉时越吃力。
+    ptr_ratio_of_header_height_to_refresh，触发刷新时移动的位置比例，默认，1.2f，移动达到头部高度 1.2 倍时可触发刷新操作。
+    ptr_duration_to_close，回弹延时，默认 200ms，回弹到刷新高度所用时间。
+    ptr_duration_to_close_header，头部回弹时间，默认 1000ms。
+    ptr_pull_to_fresh，刷新是否保持头部，默认值 true。
+    ptr_keep_header_when_refresh，下拉刷新 / 释放刷新，默认为释放刷新。
+    -->
