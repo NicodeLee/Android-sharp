@@ -1,14 +1,14 @@
-package com.nicodelee.app.fast.view;
+package com.nicodelee.app.fast.ui.view;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.Bind;
 import com.nicodelee.app.fast.R;
-import com.nicodelee.base.BaseAdapterItemView;
-import com.nicodelee.model.ItemMod;
+import com.nicodelee.app.fast.model.ItemMod;
+import com.nicodelee.app.fast.base.BaseAdapterItemView;
 
-import static com.nicodelee.qualifier.ClickType.CLICK_TYPE_DEMO_CLICKED;
+import static com.nicodelee.app.fast.qualifier.ClickType.CLICK_TYPE_DEMO_CLICKED;
 
 /**
  * Created by NocodeLee on 15/12/15.
@@ -30,7 +30,7 @@ public class DemoView extends BaseAdapterItemView<ItemMod> {
     title.setText(itemMod.getTitle());
     desc.setText(itemMod.getDesc());
 
-    setOnClickListener(new OnClickListener() {
+    setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         notifyItemAction(CLICK_TYPE_DEMO_CLICKED);

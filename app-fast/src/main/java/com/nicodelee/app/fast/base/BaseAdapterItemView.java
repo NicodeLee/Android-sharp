@@ -1,11 +1,11 @@
-package com.nicodelee.base;
+package com.nicodelee.app.fast.base;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
-import com.nicodelee.qualifier.ClickType;
+import com.nicodelee.app.fast.qualifier.ClickType;
 import io.nlopez.smartadapters.views.BindableFrameLayout;
 
 public abstract class BaseAdapterItemView<T> extends BindableFrameLayout<T> {

@@ -1,4 +1,4 @@
-package com.nicodelee.model;
+package com.nicodelee.app.fast.model;
 
 /**
  * Created by NocodeLee on 15/12/14.

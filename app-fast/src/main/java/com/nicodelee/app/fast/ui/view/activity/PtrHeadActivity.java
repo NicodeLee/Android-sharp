@@ -1,22 +1,39 @@
-package com.nicodelee.ui;
+package com.nicodelee.app.fast.ui.view.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ListView;
+import butterknife.Bind;
+import com.nicodelee.app.fast.model.DataGenerator;
+import com.nicodelee.app.fast.model.ItemListMod;
+import com.nicodelee.app.fast.ui.view.DemoListView;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.common.colours.Colour;
 import com.nicodelee.common.util.DisplayUtil;
-import com.nicodelee.ptr.JdHeader;
-import com.nicodelee.ptr.MeituanHeader;
-import com.nicodelee.ptr.RentalsSunHeader;
-import com.nicodelee.ptr.WindmillHeader;
+import com.nicodelee.ptr.header.JdHeader;
+import com.nicodelee.ptr.header.MeituanHeader;
+import com.nicodelee.ptr.header.RentalsSunHeader;
+import com.nicodelee.ptr.header.WindmillHeader;
+import com.nicodelee.ptr.loadmore.LoadMoreContainer;
+import com.nicodelee.ptr.loadmore.LoadMoreHandler;
+import com.nicodelee.ptr.loadmore.LoadMoreListViewContainer;
 import com.nicodelee.sharp.R;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import in.srain.cube.views.ptr.header.StoreHouseHeader;
+import in.srain.cube.views.ptr.header.StoreHousePath;
+import io.nlopez.smartadapters.SmartAdapter;
+import io.nlopez.smartadapters.adapters.MultiAdapter;
+import io.nlopez.smartadapters.adapters.RecyclerMultiAdapter;
+import java.util.List;
 
 /**
  * Created by NocodeLee on 15/12/16.
@@ -24,8 +41,11 @@ import in.srain.cube.views.ptr.header.StoreHouseHeader;
  */
 public class PtrHeadActivity extends BaseActivity {
 
-  private PtrFrameLayout ptr;
-  //private RecyclerView recyclerView;
+  @Bind(R.id.list_view) ListView listView;
+  @Bind(R.id.ptr_frame) PtrClassicFrameLayout ptr;
+  @Bind(R.id.list_view_container) LoadMoreListViewContainer listViewContainer;
+
+  MultiAdapter adapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -36,21 +56,45 @@ public class PtrHeadActivity extends BaseActivity {
   }
 
   @Override protected void initView() {
-    //recyclerView = findViewById(this, R.id.recycler_view);
 
-    ptr = findViewById(this, R.id.ptr_frame);
+    List<ItemListMod> itemMods = DataGenerator.generateItemList(10);
+    adapter =
+        SmartAdapter.items(itemMods).map(ItemListMod.class, DemoListView.class).into(listView);
+
     final MeituanHeader header = new MeituanHeader(this);
     ptr.setHeaderView(header);
     ptr.addPtrUIHandler(header);
-    ptr.setPtrHandler(new PtrDefaultHandler() {
+
+    ptr.setPtrHandler(new PtrHandler() {
+      @Override public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+        return PtrDefaultHandler.checkContentCanBePulledDown(frame, listView, header);
+      }
+
       @Override public void onRefreshBegin(PtrFrameLayout frame) {
         frame.postDelayed(new Runnable() {
           @Override public void run() {
+            adapter.setItems(DataGenerator.generateItemList(10));
             ptr.refreshComplete();
           }
         }, 2000);
       }
     });
+
+    //View headerMarginView = new View(this);
+    //headerMarginView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.dp2px(20)));
+    //listView.addHeaderView(headerMarginView);
+    //listViewContainer.useDefaultHeader();
+    listViewContainer.setAutoLoadMore(true);
+    listViewContainer.setLoadMoreHandler(new LoadMoreHandler() {
+      @Override public void onLoadMore(LoadMoreContainer loadMoreContainer) {
+        showToast("load more");
+        adapter.addItems(DataGenerator.generateItemList(10));
+      }
+    });
+
+
+
+
   }
 
   @Override protected CharSequence getTitleName() {
@@ -63,6 +107,7 @@ public class PtrHeadActivity extends BaseActivity {
     return true;
   }
 
+  //change head Demo
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
     if (id == R.id.menu_meituan) {
@@ -89,21 +134,20 @@ public class PtrHeadActivity extends BaseActivity {
       final StoreHouseHeader header = new StoreHouseHeader(this);
       /**
        * using a string, support: A-Z 0-9 - .
-       * you can add more letters by {@link in.srain.cube.views.ptr.header.StoreHousePath#addChar}
+       * you can add more letters by {@link StoreHousePath#addChar}
        */
       header.initWithString("Loading...");
       header.setTextColor(Colour.black50PercentColor());
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
-
     } else if (id == R.id.menu_rentalssun) {
       final RentalsSunHeader header = new RentalsSunHeader(this);
-      //header.setLayoutParams(new PtrFrameLayout.LayoutParams(-1, -2));
-      //header.setPadding(0, DisplayUtil.dp2px(15), 0, DisplayUtil.dp2px(10));
       header.setUp(ptr);
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
     }
     return super.onOptionsItemSelected(item);
   }
+
+  //load more listView
 }

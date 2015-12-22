@@ -1,7 +1,7 @@
-package com.nicodelee.model;
+package com.nicodelee.app.fast.model;
 
-import com.nicodelee.ui.PropressWheelActivity;
-import com.nicodelee.ui.PtrHeadActivity;
+import com.nicodelee.app.fast.ui.view.activity.PropressWheelActivity;
+import com.nicodelee.app.fast.ui.view.activity.PtrHeadActivity;
 
 /**
  * Created by NocodeLee on 15/12/14.

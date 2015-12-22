@@ -1,4 +1,4 @@
-package com.nicodelee.app.fast.ui;
+package com.nicodelee.app.fast.ui.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.Bind;
 import com.nicodelee.app.fast.R;
-import com.nicodelee.app.fast.view.DemoView;
+import com.nicodelee.app.fast.ui.view.DemoView;
 import com.nicodelee.base.BaseActivity;
-import com.nicodelee.model.ItemMod;
-import com.nicodelee.util.DataGenerator;
+import com.nicodelee.app.fast.model.ItemMod;
+import com.nicodelee.app.fast.model.DataGenerator;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -17,7 +17,7 @@ import io.nlopez.smartadapters.SmartAdapter;
 import io.nlopez.smartadapters.utils.ViewEventListener;
 import java.util.List;
 
-import static com.nicodelee.qualifier.ClickType.CLICK_TYPE_DEMO_CLICKED;
+import static com.nicodelee.app.fast.qualifier.ClickType.CLICK_TYPE_DEMO_CLICKED;
 
 public class MainActivity extends BaseActivity implements ViewEventListener<ItemMod> {
 

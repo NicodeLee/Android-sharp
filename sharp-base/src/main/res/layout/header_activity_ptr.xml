@@ -7,6 +7,7 @@
 >
   <include layout="@layout/common_toolbar"/>
 
+
   <in.srain.cube.views.ptr.PtrClassicFrameLayout
       xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
       android:id="@+id/ptr_frame"
@@ -20,16 +21,30 @@
       cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
       cube_ptr:ptr_resistance="1.7">
 
-    <TextView
-        android:id="@+id/ptr_in"
+    <!--<TextView-->
+        <!--android:id="@+id/ptr_in"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/skyBlueColor"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:text="喜欢这个下拉头部?"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="28sp"-->
+    <!--/>-->
+
+    <com.nicodelee.ptr.loadmore.LoadMoreListViewContainer
+        android:id="@+id/list_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/skyBlueColor"
-        android:textColor="@color/white"
-        android:text="喜欢这个下拉头部?"
-        android:gravity="center"
-        android:textSize="28sp"
-    />
+      >
+      <ListView
+          android:id="@+id/list_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:fadingEdge="none"
+          android:scrollbarStyle="outsideOverlay"
+      />
+    </com.nicodelee.ptr.loadmore.LoadMoreListViewContainer>
 
     <!--<android.support.v7.widget.RecyclerView-->
         <!--android:id="@+id/recycler_view"-->

@@ -1,4 +1,4 @@
-package com.nicodelee.ptr;
+package com.nicodelee.ptr.header;
 
 import android.content.Context;
 import android.content.res.Resources;

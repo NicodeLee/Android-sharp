@@ -1,4 +1,4 @@
-package com.nicodelee.ptr;
+package com.nicodelee.ptr.header;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
@@ -70,6 +70,9 @@ public class JdHeader extends RelativeLayout implements PtrUIHandler {
 
   @Override public void onUIRefreshComplete(PtrFrameLayout frame) {
     ivSpeed.clearAnimation();
+    if (mAnimDrawable.isRunning()){
+      mAnimDrawable.stop();
+    }
   }
 
   @Override public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status,
