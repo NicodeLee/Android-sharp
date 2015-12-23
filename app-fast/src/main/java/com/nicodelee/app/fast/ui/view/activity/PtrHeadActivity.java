@@ -1,6 +1,7 @@
 package com.nicodelee.app.fast.ui.view.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,9 @@ import com.nicodelee.ptr.header.WindmillHeader;
 import com.nicodelee.ptr.loadmore.LoadMoreContainer;
 import com.nicodelee.ptr.loadmore.LoadMoreHandler;
 import com.nicodelee.ptr.loadmore.LoadMoreListViewContainer;
+import com.nicodelee.ptr.loadmore.LoadMoreUIHandler;
 import com.nicodelee.sharp.R;
+import com.nicodelee.util.Logger;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -45,7 +48,11 @@ public class PtrHeadActivity extends BaseActivity {
   @Bind(R.id.ptr_frame) PtrClassicFrameLayout ptr;
   @Bind(R.id.list_view_container) LoadMoreListViewContainer listViewContainer;
 
-  MultiAdapter adapter;
+  private MultiAdapter adapter;
+
+  private int pageNum = 10;
+  private int maxPage = 5;
+  private int currentPage = 1;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -57,7 +64,7 @@ public class PtrHeadActivity extends BaseActivity {
 
   @Override protected void initView() {
 
-    List<ItemListMod> itemMods = DataGenerator.generateItemList(10);
+    List<ItemListMod> itemMods = DataGenerator.generateItemList(pageNum);
     adapter =
         SmartAdapter.items(itemMods).map(ItemListMod.class, DemoListView.class).into(listView);
 
@@ -65,6 +72,7 @@ public class PtrHeadActivity extends BaseActivity {
     ptr.setHeaderView(header);
     ptr.addPtrUIHandler(header);
 
+    ptr.setLoadingMinTime(1000);
     ptr.setPtrHandler(new PtrHandler() {
       @Override public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
         return PtrDefaultHandler.checkContentCanBePulledDown(frame, listView, header);
@@ -73,27 +81,27 @@ public class PtrHeadActivity extends BaseActivity {
       @Override public void onRefreshBegin(PtrFrameLayout frame) {
         frame.postDelayed(new Runnable() {
           @Override public void run() {
-            adapter.setItems(DataGenerator.generateItemList(10));
+            setLoadMore();
+            adapter.setItems(DataGenerator.generateItemList(pageNum));
             ptr.refreshComplete();
           }
-        }, 2000);
+        }, 1500);
       }
     });
 
-    //View headerMarginView = new View(this);
-    //headerMarginView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.dp2px(20)));
-    //listView.addHeaderView(headerMarginView);
-    //listViewContainer.useDefaultHeader();
-    listViewContainer.setAutoLoadMore(true);
+    listViewContainer.useDefaultFooter();
     listViewContainer.setLoadMoreHandler(new LoadMoreHandler() {
       @Override public void onLoadMore(LoadMoreContainer loadMoreContainer) {
-        showToast("load more");
-        adapter.addItems(DataGenerator.generateItemList(10));
+        //do load more
+        new Handler().postDelayed(new Runnable() {
+          @Override public void run() {
+            adapter.addItems(DataGenerator.generateItemList(pageNum));
+            listViewContainer.loadMoreFinish(false,checkMore());
+          }
+        },1000);
       }
     });
-
-
-
+    setLoadMore();
 
   }
 
@@ -149,5 +157,13 @@ public class PtrHeadActivity extends BaseActivity {
     return super.onOptionsItemSelected(item);
   }
 
-  //load more listView
+  private boolean checkMore(){
+    return ++currentPage <= maxPage;
+  }
+
+  private void setLoadMore(){
+    currentPage = 1;
+    listViewContainer.loadMoreFinish(false,true);
+  }
+
 }
