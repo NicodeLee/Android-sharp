@@ -32,7 +32,7 @@ public class LoadMoreListViewContainer extends LoadMoreContainerBase {
     }
 
     @Override
-    protected AbsListView retrieveAbsListView() {
+    protected AbsListView retrieveContainerView() {
         mListView = (ListView) getChildAt(0);
         return mListView;
     }

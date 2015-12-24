@@ -1,14 +1,12 @@
 package com.nicodelee.app.fast.ui.view;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.nicodelee.app.fast.R;
 import com.nicodelee.app.fast.model.ItemListMod;
 import io.nlopez.smartadapters.views.BindableFrameLayout;
-import static com.nicodelee.app.fast.qualifier.ClickType.*;
 
 /**
  * Created by NocodeLee on 15/12/15.
@@ -32,11 +30,11 @@ public class DemoListView extends BindableFrameLayout<ItemListMod> {
 
   @Override public void bind(ItemListMod itemListMod) {
     listTitle.setText(itemListMod.getTitle());
-    setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        notifyItemAction(CLICK_TYPE_LIST_CLICKED);
-      }
-    });
+    //setOnClickListener(new OnClickListener() {
+    //  @Override
+    //  public void onClick(View v) {
+    //    notifyItemAction(CLICK_TYPE_LIST_CLICKED);
+    //  }
+    //});
   }
 }

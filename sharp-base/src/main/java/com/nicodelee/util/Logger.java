@@ -6,6 +6,8 @@ import com.nicodelee.sharp.BuildConfig;
  * Wrapper API for sending log output.
  */
 public class Logger {
+
+  private static boolean isDebug = true;
   protected static final String TAG = "-NicodeLee-";
 
   private Logger() {
@@ -17,7 +19,7 @@ public class Logger {
    * @param msg The message you would like logged.
    */
   public static void v(String msg) {
-    if (BuildConfig.DEBUG) android.util.Log.v(TAG, buildMessage(msg));
+    if (isDebug) android.util.Log.v(TAG, buildMessage(msg));
   }
 
   /**
@@ -27,14 +29,14 @@ public class Logger {
    * @param thr An exception to log
    */
   public static void v(String msg, Throwable thr) {
-    if (BuildConfig.DEBUG) android.util.Log.v(TAG, buildMessage(msg), thr);
+    if (isDebug) android.util.Log.v(TAG, buildMessage(msg), thr);
   }
 
   /**
    * Send a DEBUG log message.
    */
   public static void d(String msg) {
-    if (BuildConfig.DEBUG) android.util.Log.d(TAG, buildMessage(msg));
+    if (isDebug) android.util.Log.d(TAG, buildMessage(msg));
   }
 
   /**
@@ -44,7 +46,7 @@ public class Logger {
    * @param thr An exception to log
    */
   public static void d(String msg, Throwable thr) {
-    if (BuildConfig.DEBUG) android.util.Log.d(TAG, buildMessage(msg), thr);
+    if (isDebug) android.util.Log.d(TAG, buildMessage(msg), thr);
   }
 
   /**
@@ -53,7 +55,7 @@ public class Logger {
    * @param msg The message you would like logged.
    */
   public static void i(String msg) {
-    if (BuildConfig.DEBUG) android.util.Log.i(TAG, buildMessage(msg));
+    if (isDebug) android.util.Log.i(TAG, buildMessage(msg));
   }
 
   /**
@@ -63,7 +65,7 @@ public class Logger {
    * @param thr An exception to log
    */
   public static void i(String msg, Throwable thr) {
-    if (BuildConfig.DEBUG) android.util.Log.i(TAG, buildMessage(msg), thr);
+    if (isDebug) android.util.Log.i(TAG, buildMessage(msg), thr);
   }
 
   /**
@@ -72,7 +74,7 @@ public class Logger {
    * @param msg The message you would like logged.
    */
   public static void e(String msg) {
-    if (BuildConfig.DEBUG) android.util.Log.e(TAG, buildMessage(msg));
+    if (isDebug) android.util.Log.e(TAG, buildMessage(msg));
   }
 
   /**
@@ -81,7 +83,7 @@ public class Logger {
    * @param msg The message you would like logged.
    */
   public static void w(String msg) {
-    if (BuildConfig.DEBUG) android.util.Log.w(TAG, buildMessage(msg));
+    if (isDebug) android.util.Log.w(TAG, buildMessage(msg));
   }
 
   /**
@@ -91,7 +93,7 @@ public class Logger {
    * @param thr An exception to log
    */
   public static void w(String msg, Throwable thr) {
-    if (BuildConfig.DEBUG) android.util.Log.w(TAG, buildMessage(msg), thr);
+    if (isDebug) android.util.Log.w(TAG, buildMessage(msg), thr);
   }
 
   /**
@@ -100,7 +102,7 @@ public class Logger {
    * @param thr An exception to log
    */
   public static void w(Throwable thr) {
-    if (BuildConfig.DEBUG) android.util.Log.w(TAG, buildMessage(""), thr);
+    if (isDebug) android.util.Log.w(TAG, buildMessage(""), thr);
   }
 
   /**
@@ -110,7 +112,7 @@ public class Logger {
    * @param thr An exception to log
    */
   public static void e(String msg, Throwable thr) {
-    if (BuildConfig.DEBUG) android.util.Log.e(TAG, buildMessage(msg), thr);
+    if (isDebug) android.util.Log.e(TAG, buildMessage(msg), thr);
   }
 
   /**

@@ -31,7 +31,7 @@ public class LoadMoreGridViewContainer extends LoadMoreContainerBase {
     }
 
     @Override
-    protected AbsListView retrieveAbsListView() {
+    protected AbsListView retrieveContainerView() {
         View view = getChildAt(0);
         mGridView = (GridViewWithHeaderAndFooter) view;
         return mGridView;
