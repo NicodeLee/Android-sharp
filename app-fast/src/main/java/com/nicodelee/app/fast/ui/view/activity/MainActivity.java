@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.Bind;
 import com.nicodelee.app.fast.R;
-import com.nicodelee.app.fast.ui.view.DemoView;
+import com.nicodelee.app.fast.ui.view.adapter.DemoView;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.app.fast.model.ItemMod;
 import com.nicodelee.app.fast.model.DataGenerator;

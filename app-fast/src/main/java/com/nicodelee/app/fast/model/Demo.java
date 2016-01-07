@@ -1,5 +1,6 @@
 package com.nicodelee.app.fast.model;
 
+import com.nicodelee.app.fast.ui.view.activity.HttpShowActivity;
 import com.nicodelee.app.fast.ui.view.activity.PropressWheelActivity;
 import com.nicodelee.app.fast.ui.view.activity.PtrHeadActivity;
 
@@ -8,8 +9,9 @@ import com.nicodelee.app.fast.ui.view.activity.PtrHeadActivity;
  * Email：lirizhilirizhi@163.com
  */
 public enum Demo{
-  PTR("Ultra Pull To Refresh","百万兄的下拉刷新(多种自定义头部)", PtrHeadActivity.class),
-  PROPRESSWHEEL("PropressWheel","圆形loading", PropressWheelActivity.class);
+  PTR("Ultra Pull To Refresh","百万兄的下拉刷新(多种自定义头部)加自动加载(Recuclerview Listview)", PtrHeadActivity.class),
+  PROPRESSWHEEL("PropressWheel","圆形loading", PropressWheelActivity.class),
+  HTTPSHOW("网络部分","最受欢迎的网络请求库", HttpShowActivity.class);
 
   public final String title;//标题
   public final String desc;//描述

@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.nicodelee.ptr.loadmore.recyclerview.HFAdapter;
 import com.nicodelee.ptr.loadmore.recyclerview.HFRecyclerAdapter;
-import com.nicodelee.util.Logger;
 
 /**
  * @author NicodeLee

@@ -6,6 +6,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.nicodelee.sharp.R;
@@ -18,7 +19,7 @@ import in.srain.cube.views.ptr.indicator.PtrIndicator;
  * Created by NocodeLee on 15/12/15.
  * Email：lirizhilirizhi@163.com
  */
-public class MeituanHeader extends RelativeLayout implements PtrUIHandler {
+public class MeituanHeader extends FrameLayout implements PtrUIHandler {
 
   private LayoutInflater inflater;
   private ViewGroup headView;
@@ -105,14 +106,15 @@ public class MeituanHeader extends RelativeLayout implements PtrUIHandler {
 
   public void handleScale(float scale) {
     scale = 0.1f + 0.9f * scale;
+    ViewCompat.setPivotX(mPullDownView,mPullDownView.getWidth()/2);
     ViewCompat.setScaleX(mPullDownView, scale);
     ViewCompat.setPivotY(mPullDownView, mPullDownView.getHeight());
     ViewCompat.setScaleY(mPullDownView, scale);
   }
 
   public void changeToPullDown() {
-    mPullDownView.setImageResource(mChangeToReleaseRefreshAnimResId);
     mPullDownView.setVisibility(VISIBLE);
+    mPullDownView.setImageResource(mChangeToReleaseRefreshAnimResId);
     mReleaseRefreshingView.setVisibility(INVISIBLE);
   }
 

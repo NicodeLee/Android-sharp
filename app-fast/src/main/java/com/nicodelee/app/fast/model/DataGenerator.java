@@ -25,7 +25,7 @@ public class DataGenerator {
     List<ItemListMod> result = new ArrayList<>(n);
     for (int i = 0; i < n; i++) {
       ItemListMod itemListMod =
-          new ItemListMod(String.valueOf(getCharArry(3)), String.valueOf(getCharArry(6)));
+          new ItemListMod(String.valueOf(getCharArry(6)), String.valueOf(getCharArry(6)));
       result.add(itemListMod);
     }
     return result;

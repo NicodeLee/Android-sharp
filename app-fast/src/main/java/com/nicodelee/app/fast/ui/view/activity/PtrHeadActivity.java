@@ -10,7 +10,7 @@ import android.view.View;
 import butterknife.Bind;
 import com.nicodelee.app.fast.model.DataGenerator;
 import com.nicodelee.app.fast.model.ItemListMod;
-import com.nicodelee.app.fast.ui.view.DemoListView;
+import com.nicodelee.app.fast.ui.view.adapter.DemoListView;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.common.colours.Colour;
 import com.nicodelee.ptr.header.JdHeader;
@@ -22,7 +22,6 @@ import com.nicodelee.ptr.loadmore.LoadMoreHandler;
 import com.nicodelee.ptr.loadmore.LoadMoreRecyclerViewContainer;
 import com.nicodelee.sharp.R;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
-import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -39,7 +38,7 @@ import java.util.List;
  */
 public class PtrHeadActivity extends BaseActivity {
 
-  @Bind(R.id.ptr_frame) PtrClassicFrameLayout ptr;
+  @Bind(R.id.ptr_frame) PtrFrameLayout ptr;
   @Bind(R.id.recycler_view) RecyclerView recyclerView;
   @Bind(R.id.view_container) LoadMoreRecyclerViewContainer viewContainer;
   //@Bind(R.id.list_view) ListView listView;
@@ -47,7 +46,7 @@ public class PtrHeadActivity extends BaseActivity {
 
   private RecyclerMultiAdapter adapter;
   //private MultiAdapter adapter;
-  private int pageNum = 10;
+  private int pageNum = 15;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -58,12 +57,12 @@ public class PtrHeadActivity extends BaseActivity {
   }
 
   @Override protected void initView() {
-    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    //recyclerView.setLayoutManager(new GridLayoutManager(this,2));//Grid列表 ok
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));//线性列表 ok
+    //recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));//
     List<ItemListMod> itemMods = DataGenerator.generateItemList(pageNum);
     adapter =
         SmartAdapter.items(itemMods).map(ItemListMod.class, DemoListView.class).into(recyclerView);
-    //showToast(String.format("adapter=%b", adapter == null));
-    //viewContainer.setAdapter(adapter);
 
     final MeituanHeader header = new MeituanHeader(this);
     ptr.setHeaderView(header);
@@ -101,7 +100,7 @@ public class PtrHeadActivity extends BaseActivity {
   }
 
   @Override protected CharSequence getTitleName() {
-    return "多种下拉头部";
+    return "多下拉头部(自动加载更多)";
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,7 +151,7 @@ public class PtrHeadActivity extends BaseActivity {
     return super.onOptionsItemSelected(item);
   }
 
-  private int maxPage = 5;
+  private int maxPage = 4;
   private int currentPage = 1;
 
   private boolean checkMore() {

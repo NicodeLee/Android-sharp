@@ -1,28 +1,27 @@
-package com.nicodelee.app.fast.ui.view;
+package com.nicodelee.app.fast.ui.view.adapter;
 
 import android.content.Context;
 import android.widget.TextView;
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.nicodelee.app.fast.R;
+import com.nicodelee.app.fast.base.BaseAdapterItemView;
 import com.nicodelee.app.fast.model.ItemListMod;
-import io.nlopez.smartadapters.views.BindableFrameLayout;
 
 /**
  * Created by NocodeLee on 15/12/15.
  * Email：lirizhilirizhi@163.com
  */
-public class DemoListView extends BindableFrameLayout<ItemListMod> {
+public class DemoListView extends BaseAdapterItemView<ItemListMod> {
 
   @Bind(R.id.demo_list_title) TextView listTitle;
   public DemoListView(Context context) {
     super(context);
   }
 
-  @Override
-  public void onViewInflated() {
-    ButterKnife.bind(this);
-  }
+  //@Override
+  //public void onViewInflated() {
+  //  ButterKnife.bind(this);
+  //}
 
   @Override public int getLayoutId() {
     return R.layout.view_item_list_demo;

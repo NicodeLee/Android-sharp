@@ -1,4 +1,4 @@
-package com.nicodelee.app.fast.ui.view;
+package com.nicodelee.app.fast.ui.view.adapter;
 
 import android.content.Context;
 import android.view.View;

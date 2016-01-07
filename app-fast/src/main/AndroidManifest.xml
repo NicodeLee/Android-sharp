@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nicodelee.app.fast"
 >
+  <uses-permission android:name="android.permission.INTERNET" />
 
   <application
       android:allowBackup="true"
@@ -40,6 +41,8 @@
             android:name="android.intent.action.MAIN"/>
       </intent-filter>
     </activity>
+
+    <activity android:name=".ui.view.activity.HttpShowActivity"></activity>
 
   </application>
 
