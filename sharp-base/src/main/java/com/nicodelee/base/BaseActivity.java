@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.nicodelee.sharp.R;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Fresco.initialize(this);
     setContentView(getLayoutResId());
     initializeToolbar();
     initView();

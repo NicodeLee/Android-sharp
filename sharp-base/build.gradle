@@ -26,4 +26,7 @@ dependencies {
 
   compile 'com.squareup.okhttp:okhttp:2.7.0'
   compile 'com.squareup.okio:okio:1.6.0'
+
+  compile "com.facebook.fresco:fresco:0.8.1+"
+
 }
