@@ -27,7 +27,6 @@ public class ImagesActivity extends BaseActivity {
   }
 
   @Override protected void initView() {
-    //Uri imageUri = Uri.parse("https://avatars0.githubusercoent.com/u/3689377?v=3&amp;s=460");
     Uri imageUri = Uri.parse("https://avatars0.githubusercontent.com/u/3689377?v=3&amp;s=460");
     simpleDraweeView.setImageURI(imageUri);
     DraweeController controller = Fresco.newDraweeControllerBuilder()

@@ -19,6 +19,7 @@
         android:id="@+id/main_sdv"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_margin="12dp"
         fresco:actualImageScaleType="focusCrop"
         fresco:placeholderImage="@mipmap/icon_placeholder"
         fresco:placeholderImageScaleType="focusCrop"
@@ -37,7 +38,7 @@
         fresco:roundTopRight="true"
         fresco:roundBottomLeft="true"
         fresco:roundBottomRight="true"
-        fresco:roundingBorderWidth="10dp"
+        fresco:roundingBorderWidth="4dp"
         fresco:roundingBorderColor="@color/pinkColor"
     />
   </com.nicodelee.common.layout.FlowLayout>
