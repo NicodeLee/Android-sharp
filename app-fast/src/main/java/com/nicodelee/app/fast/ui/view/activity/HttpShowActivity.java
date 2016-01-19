@@ -6,16 +6,21 @@ import butterknife.OnClick;
 import com.nicodelee.app.fast.R;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.common.commonview.CommonToast;
+import com.nicodelee.http.okhttp.OkHttpUtils;
+import com.nicodelee.http.okhttp.callback.StringCallback;
 import com.nicodelee.util.Logger;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by NocodeLee on 15/12/24.
  * Email：lirizhilirizhi@163.com
+ *
+ * Demo Base @see https://github.com/hongyangAndroid/okhttp-utils
  */
 public class HttpShowActivity extends BaseActivity {
   @Bind(R.id.httpReslut) TextView httpReslut;
@@ -30,6 +35,7 @@ public class HttpShowActivity extends BaseActivity {
 
   //String url = "https://publicobject.com/helloworld.txt";
   String url = "http://www.baidu.com/";
+  String baseUrl = "http://1.beautifulwords.applinzi.com/";
 
   @OnClick(R.id.getHttp) void getData() {
     CommonToast.showToast(this, "请求中...");
@@ -45,13 +51,39 @@ public class HttpShowActivity extends BaseActivity {
     }).start();
   }
 
-  @OnClick(R.id.get_http_async) void dogetAsync(){
-    CommonToast.showToast(this,"异步请求");
+  @OnClick(R.id.get_http_async) void dogetAsync() {
+    CommonToast.showToast(this, "异步请求");
     httpReslut.setText("");
     getAsync(url);
   }
 
+  @OnClick(R.id.get_html) void getHtml() {
+    OkHttpUtils.get().url(url).build().execute(new StringCallback() {
+      @Override public void onError(Call call, Exception e) {
+      }
+
+      @Override public void onResponse(String response) {
+        httpReslut.setText(response);
+      }
+    });
+  }
+
+  @OnClick(R.id.get_user) void getUser() {
+    String url = baseUrl + "user";
+    OkHttpUtils.get().url(url).build().execute(new UserCallback() {
+      @Override public void onError(Call call, Exception e) {
+
+      }
+
+      @Override public void onResponse(User response) {
+        httpReslut.setText(
+            String.format("name=%s,pwd=%s,desc=%s", response.name, response.pwd, response.desc));
+      }
+    });
+  }
+
   OkHttpClient client = new OkHttpClient();
+
   //同步get请求
   String getRun(String url) throws IOException {
     Request request = new Request.Builder().url(url).build();
@@ -68,30 +100,22 @@ public class HttpShowActivity extends BaseActivity {
     return response.body().string();
   }
 
-
-  public void getAsync(String url){
-    Request request = new Request.Builder()
-        .url(url)
-        .build();
+  public void getAsync(String url) {
+    Request request = new Request.Builder().url(url).build();
 
     client.newCall(request).enqueue(new Callback() {
-      @Override public void onFailure(Request request, IOException e) {
+      @Override public void onFailure(Call call, IOException e) {
         e.printStackTrace();
       }
 
-      @Override public void onResponse(Response response) throws IOException {
-        if (response.isSuccessful()){
-          final String res = response.body().string();
-          runOnUiThread(new Runnable() {
-            @Override public void run() {
-              httpReslut.setText(res);
-            }
-          });
-        }
-
+      @Override public void onResponse(Call call, Response response) throws IOException {
+        final String res = response.body().string();
+        runOnUiThread(new Runnable() {
+          @Override public void run() {
+            httpReslut.setText(res);
+          }
+        });
       }
     });
   }
-
-
 }

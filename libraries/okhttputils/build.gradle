@@ -3,30 +3,32 @@ apply plugin: 'com.android.library'
 version = "2.1.0"
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+  def androidConfig = rootProject.ext.android
+  compileSdkVersion androidConfig.compileSdkVersion
+  buildToolsVersion androidConfig.buildToolsVersion
 
-    defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    minSdkVersion androidConfig.minSdkVersion
+    targetSdkVersion androidConfig.targetSdkVersion
+    versionCode androidConfig.versionCode
+    versionName androidConfig.versionName
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    lintOptions{
-        abortOnError false
-    }
-
+  }
+  lintOptions {
+    abortOnError false
+  }
 }
 
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.squareup.okhttp3:okhttp:3.0.1'
+  def dependencies = rootProject.ext.dependencies
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile dependencies.okhttp
+  compile dependencies.gson
 }

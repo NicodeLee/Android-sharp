@@ -1,14 +1,15 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  def androidConfig = rootProject.ext.android
+  compileSdkVersion androidConfig.compileSdkVersion
+  buildToolsVersion androidConfig.buildToolsVersion
 
   defaultConfig {
-    minSdkVersion 15
-    targetSdkVersion 23
-    versionCode 1
-    versionName "1.0"
+    minSdkVersion androidConfig.minSdkVersion
+    targetSdkVersion androidConfig.targetSdkVersion
+    versionCode androidConfig.versionCode
+    versionName androidConfig.versionName
   }
   buildTypes {
     release {
@@ -19,14 +20,16 @@ android {
 }
 
 dependencies {
+  def dependencies = rootProject.ext.dependencies
   compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:23.1.1'
+  compile dependencies["com.android.support:appcompat-v7"]
+
   compile project(':libraries:common')
   compile project(':libraries:ptr-lib')
 
-  compile 'com.squareup.okhttp:okhttp:2.7.0'
-  compile 'com.squareup.okio:okio:1.6.0'
-
-  compile "com.facebook.fresco:fresco:0.8.1+"
+//  compile 'com.squareup.okhttp:okhttp:2.7.0'
+  compile dependencies.okhttp
+  compile dependencies.okio
+  compile dependencies.fresco
 
 }

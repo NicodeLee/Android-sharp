@@ -66,4 +66,10 @@ public class GetBuilder extends OkHttpRequestBuilder {
     headers.put(key, val);
     return this;
   }
+
+
+   public GetBuilder decodeAsEntity(Class cls) {
+    return this;
+  }
+
 }
