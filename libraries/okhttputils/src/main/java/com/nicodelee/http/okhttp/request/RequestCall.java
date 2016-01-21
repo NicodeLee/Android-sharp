@@ -1,5 +1,7 @@
 package com.nicodelee.http.okhttp.request;
 
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -71,13 +73,25 @@ public class RequestCall {
   }
 
   public void execute(Callback callback) {
-    generateCall(callback);
+    setCallback(callback);
+    OkHttpUtils.getInstance().execute(this, callback);
+  }
 
+  public <T>void executeEntity(Class<T> cls,Callback callback) {
+    setCallback(callback);
+    OkHttpUtils.getInstance().executeEntity(cls,this, callback);
+  }
+
+  public void executeList(TypeToken typeToken,Callback callback) {
+    setCallback(callback);
+    OkHttpUtils.getInstance().executeList(typeToken,this, callback);
+  }
+
+  private void setCallback(Callback callback){
+    generateCall(callback);
     if (callback != null) {
       callback.onBefore(request);
     }
-
-    OkHttpUtils.getInstance().execute(this, callback);
   }
 
   public Call getCall() {

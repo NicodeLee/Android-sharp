@@ -1,7 +1,5 @@
 package com.nicodelee.util;
 
-import com.nicodelee.sharp.BuildConfig;
-
 /**
  * Wrapper API for sending log output.
  */

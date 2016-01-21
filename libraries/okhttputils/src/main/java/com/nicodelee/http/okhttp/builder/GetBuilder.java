@@ -1,5 +1,6 @@
 package com.nicodelee.http.okhttp.builder;
 
+import com.nicodelee.http.okhttp.decoder.DataObjectDecoder;
 import com.nicodelee.http.okhttp.request.GetRequest;
 import com.nicodelee.http.okhttp.request.RequestCall;
 
@@ -67,9 +68,8 @@ public class GetBuilder extends OkHttpRequestBuilder {
     return this;
   }
 
-
-   public GetBuilder decodeAsEntity(Class cls) {
-    return this;
-  }
-
+  //public<T> GetBuilder decodeAsEntity (Class<T> cls) {
+  //  this.decoder = new DataObjectDecoder(cls);
+  //  return this;
+  //}
 }

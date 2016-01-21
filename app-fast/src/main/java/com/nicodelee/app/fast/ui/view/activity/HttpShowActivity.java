@@ -7,7 +7,6 @@ import com.nicodelee.app.fast.R;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.common.commonview.CommonToast;
 import com.nicodelee.http.okhttp.OkHttpUtils;
-import com.nicodelee.http.okhttp.callback.StringCallback;
 import com.nicodelee.util.Logger;
 import java.io.IOException;
 import okhttp3.Call;
