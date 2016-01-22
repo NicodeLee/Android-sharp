@@ -1,6 +1,7 @@
 package com.nicodelee.app.fast.ui.view.activity;
 
 import com.google.gson.Gson;
+import com.nicodelee.datasystem.User;
 import com.nicodelee.http.okhttp.callback.Callback;
 import java.io.IOException;
 import okhttp3.Response;

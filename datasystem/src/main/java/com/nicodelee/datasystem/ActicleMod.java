@@ -1,4 +1,4 @@
-package com.nicodelee.base.ui.activity;
+package com.nicodelee.datasystem;
 
 /**
  * Created by Lin on 15/3/26.

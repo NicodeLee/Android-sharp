@@ -28,6 +28,7 @@ dependencies {
   compile dependencies["com.android.support:design"]
 
   compile project(':sharp-base')
+  compile project(':datasystem')
   compile project(':libraries:okhttputils')
 
 }

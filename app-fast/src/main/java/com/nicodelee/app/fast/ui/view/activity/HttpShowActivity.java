@@ -1,14 +1,22 @@
 package com.nicodelee.app.fast.ui.view.activity;
 
+
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.OnClick;
+import com.google.gson.reflect.TypeToken;
 import com.nicodelee.app.fast.R;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.common.commonview.CommonToast;
+import com.nicodelee.datasystem.ActicleMod;
+import com.nicodelee.datasystem.User;
 import com.nicodelee.http.okhttp.OkHttpUtils;
+import com.nicodelee.http.okhttp.callback.EntityCallback;
+import com.nicodelee.http.okhttp.callback.StringCallback;
 import com.nicodelee.util.Logger;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -69,16 +77,25 @@ public class HttpShowActivity extends BaseActivity {
 
   @OnClick(R.id.get_user) void getUser() {
     String url = baseUrl + "user";
-    OkHttpUtils.get().url(url).build().execute(new UserCallback() {
-      @Override public void onError(Call call, Exception e) {
-
-      }
-
-      @Override public void onResponse(User response) {
-        httpReslut.setText(
-            String.format("name=%s,pwd=%s,desc=%s", response.name, response.pwd, response.desc));
+    CommonToast.showToast(this, "getUser");
+    OkHttpUtils.get().url(url).build().executeEntity(User.class, new EntityCallback() {
+      @Override public void onResponse(Object response) {
+        User user = (User) response;
+        httpReslut.setText(String.format("name=%s,pwd=%s,desc=%s", user.name, user.pwd, user.desc));
       }
     });
+  }
+
+  @OnClick(R.id.get_List) void getList() {
+    String url = baseUrl + "acticle/0/0/";
+    CommonToast.showToast(this, "getList");
+    OkHttpUtils.get().url(url).build()
+        .executeList(new TypeToken<ArrayList<ActicleMod>>(){}, new EntityCallback() {
+          @Override public void onResponse(Object response) {
+            List<ActicleMod> lists= (List) response;
+            httpReslut.setText(String.format("list size=%s,details=%s",lists.size(),lists.get(0).details));
+          }
+        });
   }
 
   OkHttpClient client = new OkHttpClient();
@@ -118,3 +135,4 @@ public class HttpShowActivity extends BaseActivity {
     });
   }
 }
+

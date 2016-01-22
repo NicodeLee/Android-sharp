@@ -1,4 +1,4 @@
-package com.nicodelee.app.fast.ui.view.activity;
+package com.nicodelee.datasystem;
 
 public class User {
 

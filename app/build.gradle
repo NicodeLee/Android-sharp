@@ -28,6 +28,10 @@ dependencies {
   compile dependencies["com.android.support:appcompat-v7"]
   compile dependencies["com.android.support:design"]
 
+  compile dependencies.rebound
+  compile dependencies.backboard
+
   compile project(':sharp-base')
-  compile project(':libraries:okhttputils')
+  compile project(':datasystem')
+//  compile project(':libraries:okhttputils')
 }
