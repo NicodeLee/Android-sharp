@@ -46,6 +46,8 @@
 
     <activity android:name=".ui.view.activity.ImagesActivity"></activity>
 
+    <activity android:name=".ui.view.activity.AnimationActivity"></activity>
+
   </application>
 
 </manifest>

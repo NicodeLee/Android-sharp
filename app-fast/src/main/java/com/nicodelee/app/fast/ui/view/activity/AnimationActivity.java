@@ -1,4 +1,4 @@
-package com.nicodelee.base.ui.activity;
+package com.nicodelee.app.fast.ui.view.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,8 +6,8 @@ import android.widget.RelativeLayout;
 import butterknife.Bind;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringSystem;
+import com.nicodelee.app.fast.R;
 import com.nicodelee.base.BaseActivity;
-import com.nicodelee.base.R;
 import com.tumblr.backboard.Actor;
 import com.tumblr.backboard.MotionProperty;
 import com.tumblr.backboard.performer.Performer;

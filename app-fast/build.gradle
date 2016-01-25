@@ -31,4 +31,7 @@ dependencies {
   compile project(':datasystem')
   compile project(':libraries:okhttputils')
 
+  compile dependencies.rebound
+  compile dependencies.backboard
+
 }
