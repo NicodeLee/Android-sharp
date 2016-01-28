@@ -101,7 +101,7 @@ public class HttpShowActivity extends BaseActivity {
   OkHttpClient client = new OkHttpClient();
 
   //同步get请求
-  String getRun(String url) throws IOException {
+  void getRun(String url) throws IOException {
     Request request = new Request.Builder().url(url).build();
     Response response = client.newCall(request).execute();
     if (response.isSuccessful()) {
@@ -113,7 +113,6 @@ public class HttpShowActivity extends BaseActivity {
         }
       });
     }
-    return response.body().string();
   }
 
   public void getAsync(String url) {

@@ -84,5 +84,7 @@ public class AnimationActivity extends BaseActivity {
         }
       }
     });
+
+
   }
 }

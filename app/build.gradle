@@ -30,8 +30,11 @@ dependencies {
 
   compile dependencies.rebound
   compile dependencies.backboard
+  compile dependencies.observablescrollview
+  compile dependencies.hollyviewpager
 
   compile project(':sharp-base')
   compile project(':datasystem')
 //  compile project(':libraries:okhttputils')
+
 }

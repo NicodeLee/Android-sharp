@@ -32,6 +32,8 @@ ext {
                   "smartadapters"                      : "io.nlopez.smartadapters:library:1.3.0",
                   "rebound"                            : "com.facebook.rebound:rebound:0.3.8",
                   "backboard"                          : "com.tumblr:backboard:0.1.0",
+                  "observablescrollview"               : "com.github.ksoichiro:android-observablescrollview:1.6.0",
+                  "hollyviewpager"                     : "com.github.florent37:hollyviewpager:1.0.1",
                   "io.reactivex.rxandroid"             : "io.reactivex:rxandroid:1.0.1"
 
   ]

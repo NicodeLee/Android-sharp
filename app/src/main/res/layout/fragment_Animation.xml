@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.ksoichiro.android.observablescrollview.ObservableScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingLeft="10dp"
+      android:paddingRight="10dp"
+      android:layout_marginLeft="@dimen/viewpager_margin_fix"
+      android:layout_marginRight="@dimen/viewpager_margin_fix"
+      android:orientation="vertical">
+
+    <include layout="@layout/hvp_header_placeholder"/>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:cardBackgroundColor="@color/white">
+      <LinearLayout
+          android:clipChildren="false"
+          android:clipToPadding="false"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <View
+            android:id="@+id/circle0"
+            android:background="@drawable/circle_blue"
+            android:layout_gravity="center"
+            android:layout_width="64dp"
+            android:layout_height="64dp"/>
+        <Space
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/circle1"
+            android:background="@drawable/circle_red"
+            android:layout_gravity="center"
+            android:layout_width="64dp"
+            android:layout_height="64dp"/>
+        <Space
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/circle2"
+            android:background="@drawable/circle_orange"
+            android:layout_gravity="center"
+            android:layout_width="64dp"
+            android:layout_height="64dp"/>
+        <Space
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+      </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+  </LinearLayout>
+</com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
