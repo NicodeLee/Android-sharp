@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.facebook.rebound.Spring;
@@ -14,6 +15,8 @@ import com.github.florent37.hollyviewpager.HollyViewPagerBus;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
 import com.nicodelee.base.BaseFragment;
 import com.nicodelee.base.R;
+import com.nicodelee.common.util.DevicesUtil;
+import com.nicodelee.util.Logger;
 import com.tumblr.backboard.Actor;
 import com.tumblr.backboard.MotionProperty;
 import com.tumblr.backboard.performer.Performer;
@@ -52,6 +55,9 @@ public class AnimationFragment extends BaseFragment {
         mCircles[0] = mRootView.findViewById(R.id.circle0);
         mCircles[1] = mRootView.findViewById(R.id.circle1);
         mCircles[2] = mRootView.findViewById(R.id.circle2);
+
+        mRootView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+            (DevicesUtil.screenHeight) - DevicesUtil.dip2px(mActivity,48+150+24)));
 
         final SpringSystem springSystem = SpringSystem.create();
         final Spring[] springs = new Spring[3];
