@@ -1,14 +1,14 @@
-package com.nicodelee.base.ui.activity;
+package com.nicodelee.app.fast.ui.view.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import butterknife.Bind;
 import com.github.florent37.hollyviewpager.HollyViewPager;
 import com.github.florent37.hollyviewpager.HollyViewPagerConfigurator;
+import com.nicodelee.app.fast.R;
+import com.nicodelee.app.fast.ui.view.fragment.AnimationFragment;
+import com.nicodelee.app.fast.ui.view.fragment.ScrollViewFragment;
 import com.nicodelee.base.BaseActivity;
-import com.nicodelee.base.R;
-import com.nicodelee.base.ui.fragment.AnimationFragment;
-import com.nicodelee.base.ui.fragment.ScrollViewFragment;
 
 /**
  * Created by NocodeLee on 16/1/27.

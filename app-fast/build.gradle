@@ -33,5 +33,7 @@ dependencies {
 
   compile dependencies.rebound
   compile dependencies.backboard
+  compile dependencies.observablescrollview
+//  compile dependencies.hollyviewpager
 
 }

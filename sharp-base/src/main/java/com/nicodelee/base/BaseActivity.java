@@ -7,12 +7,14 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.nicodelee.sharp.R;
+import com.nicodelee.util.Logger;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,7 +26,9 @@ public abstract class BaseActivity extends AppCompatActivity {
   public TextView toolbarTitleView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    overridePendingTransition(R.anim.slide_in_from_right,R.anim.slide_out_to_left);
     super.onCreate(savedInstanceState);
+    //Logger.e("Activity:"+getClass().getSimpleName());
     Fresco.initialize(this);
     setContentView(getLayoutResId());
     initializeToolbar();
@@ -167,5 +171,10 @@ public abstract class BaseActivity extends AppCompatActivity {
   abstract protected @LayoutRes int getLayoutResId();
 
   protected void initView() {
+  }
+
+  @Override public void finish() {
+    super.finish();
+    overridePendingTransition(R.anim.slide_in_from_left,R.anim.slide_out_to_right);
   }
 }

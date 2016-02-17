@@ -1,4 +1,4 @@
-package com.nicodelee.base.ui.fragment;
+package com.nicodelee.app.fast.ui.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,10 +13,9 @@ import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringSystem;
 import com.github.florent37.hollyviewpager.HollyViewPagerBus;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
+import com.nicodelee.app.fast.R;
 import com.nicodelee.base.BaseFragment;
-import com.nicodelee.base.R;
 import com.nicodelee.common.util.DevicesUtil;
-import com.nicodelee.util.Logger;
 import com.tumblr.backboard.Actor;
 import com.tumblr.backboard.MotionProperty;
 import com.tumblr.backboard.performer.Performer;

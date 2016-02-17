@@ -22,7 +22,7 @@ ext {
                   "com.jakewharton:butterknife"        : "com.jakewharton:butterknife:7.0.1",
                   "gson"                               : "com.google.code.gson:gson:2.5",
                   "com.nostra13.universalimageloader"  : "com.nostra13.universalimageloader:universal-image-loader:1.9.5",
-                  "fresco"                             : "com.facebook.fresco:fresco:0.8.1+",
+                  "fresco"                             : "com.facebook.fresco:fresco:0.9.0+",
                   "com.github.chrisbanes.photoview"    : "com.github.chrisbanes.photoview:library:1.2.4",
                   "de.greenrobot.eventbus"             : "de.greenrobot:eventbus:2.4.0",
                   "com.squareup.retrofit"              : "com.squareup.retrofit:retrofit:1.9.0",

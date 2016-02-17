@@ -34,4 +34,6 @@ dependencies {
   compile dependencies.okio
   compile dependencies.fresco
 
+  compile dependencies.hollyviewpager
+
 }

@@ -7,4 +7,10 @@
     <!-- jd -->
     <dimen name="refresh_header_height_jd">100dp</dimen>
 
+
+    <!--hollyViewPager-->
+    <dimen name="header_height">150dp</dimen>
+    <dimen name="viewpager_margin">-64dp</dimen>
+    <dimen name="viewpager_margin_fix">32dp</dimen>
+
 </resources>

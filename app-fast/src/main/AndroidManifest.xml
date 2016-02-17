@@ -49,6 +49,8 @@
 
     <activity android:name=".ui.view.activity.AnimationActivity"></activity>
 
+    <activity android:name=".ui.view.activity.HollyVPActivity"></activity>
+
   </application>
 
 </manifest>
