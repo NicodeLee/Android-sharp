@@ -13,9 +13,6 @@ import com.github.florent37.hollyviewpager.HollyViewPagerBus;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
 import com.nicodelee.base.R;
 
-/**
- * Created by florentchampigny on 07/08/15.
- */
 public class ScrollViewFragment extends Fragment {
 
     @Bind(R.id.scrollView) ObservableScrollView scrollView;

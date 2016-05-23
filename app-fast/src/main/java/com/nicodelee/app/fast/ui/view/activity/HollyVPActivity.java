@@ -34,7 +34,6 @@ public class HollyVPActivity extends BaseActivity {
     hollyViewPager.setConfigurator(new HollyViewPagerConfigurator() {
       @Override public float getHeightPercentForPage(int page) {
         float height = ((page + 4) % 10) / 10f; //headerHeight的比例
-        //Logger.e("tab Height==" + height);
         return height;
       }
     });
@@ -57,6 +56,8 @@ public class HollyVPActivity extends BaseActivity {
         switch (position) {
           case 0:
             return "backboard";
+          case 1:
+            return "官方API(3.0以上)";
         }
         return "TITLE " + position;
       }

@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+  <include layout="@layout/common_toolbar"/>
+
+  <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.nicodelee.common.layout.FlowLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim"
+          android:text="渐变"
+      />
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim2"
+          android:text="旋转"
+      />
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim3"
+          android:text="移出"
+      />
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim4"
+          android:text="缩放Y"
+      />
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim7"
+          android:text="缩放"
+      />
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim5"
+          android:text="组合"
+      />
+      <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:id="@+id/start_anim6"
+          android:text="Xml"
+      />
+    </com.nicodelee.common.layout.FlowLayout>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/tv_anim"
+        android:text="动画好玩,玩好动画"
+        android:textSize="20sp"
+        android:layout_centerInParent="true"
+    />
+
+  </RelativeLayout>
+
+</LinearLayout>

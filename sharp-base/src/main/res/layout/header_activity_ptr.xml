@@ -12,7 +12,7 @@
       xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
       android:id="@+id/ptr_frame"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="wrap_content"
       android:background="@color/white"
       cube_ptr:ptr_duration_to_close="100"
       cube_ptr:ptr_duration_to_close_header="800"
@@ -22,28 +22,28 @@
       cube_ptr:ptr_resistance="1.7">
 
     <!--<com.nicodelee.ptr.loadmore.LoadMoreListViewContainer-->
-        <!--android:id="@+id/list_view_container"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-      <!--&gt;-->
-      <!--<ListView-->
-          <!--android:id="@+id/list_view"-->
-          <!--android:layout_width="match_parent"-->
-          <!--android:layout_height="match_parent"-->
-          <!--android:fadingEdge="none"-->
-          <!--android:scrollbarStyle="outsideOverlay"-->
-      <!--/>-->
+    <!--android:id="@+id/list_view_container"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--&gt;-->
+    <!--<ListView-->
+    <!--android:id="@+id/list_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fadingEdge="none"-->
+    <!--android:scrollbarStyle="outsideOverlay"-->
+    <!--/>-->
     <!--</com.nicodelee.ptr.loadmore.LoadMoreListViewContainer>-->
 
     <com.nicodelee.ptr.loadmore.LoadMoreRecyclerViewContainer
-    android:id="@+id/view_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+        android:id="@+id/view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
       <android.support.v7.widget.RecyclerView
-      android:id="@+id/recycler_view"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+          android:id="@+id/recycler_view"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
     </com.nicodelee.ptr.loadmore.LoadMoreRecyclerViewContainer>
 
 

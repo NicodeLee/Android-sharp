@@ -24,15 +24,15 @@ public class LoadMoreRecyclerViewContainer extends LoadMoreContainerBase {
   }
 
   @Override protected void addFooterView(View view) {
-    RecyclerView.Adapter<?> adapter2 = (RecyclerView.Adapter<?>) getAdapter();
+    RecyclerView.Adapter<?> adapter = (RecyclerView.Adapter<?>) getAdapter();
     if (adapter instanceof HFAdapter) {
       hfAdapter = (HFAdapter) adapter;
     } else {
-      hfAdapter = new HFRecyclerAdapter(adapter2);
+      hfAdapter = new HFRecyclerAdapter(adapter);
     }
-    adapter2 = hfAdapter;
     hfAdapter.addFooter(view);
-    mRecyelerView.setAdapter(adapter2);
+    mRecyelerView.setAdapter(hfAdapter);
+
   }
 
   @Override protected void removeFooterView(View view) {

@@ -7,6 +7,7 @@ import com.github.florent37.hollyviewpager.HollyViewPager;
 import com.github.florent37.hollyviewpager.HollyViewPagerConfigurator;
 import com.nicodelee.base.BaseActivity;
 import com.nicodelee.base.R;
+import com.nicodelee.base.ui.fragment.AnimationDemoFragment;
 import com.nicodelee.base.ui.fragment.AnimationFragment;
 import com.nicodelee.base.ui.fragment.ScrollViewFragment;
 
@@ -34,7 +35,6 @@ public class HollyVPActivity extends BaseActivity {
     hollyViewPager.setConfigurator(new HollyViewPagerConfigurator() {
       @Override public float getHeightPercentForPage(int page) {
         float height = ((page + 4) % 10) / 10f; //headerHeight的比例
-        //Logger.e("tab Height==" + height);
         return height;
       }
     });
@@ -44,6 +44,8 @@ public class HollyVPActivity extends BaseActivity {
         switch (position) {
           case 0:
             return AnimationFragment.newInstance("弹性动画");
+          case 1:
+            return AnimationDemoFragment.newInstance("官方API");
         }
 
         return ScrollViewFragment.newInstance((String) getPageTitle(position));
@@ -57,6 +59,8 @@ public class HollyVPActivity extends BaseActivity {
         switch (position) {
           case 0:
             return "backboard";
+          case 1:
+            return "官方API";
         }
         return "TITLE " + position;
       }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import com.nicodelee.util.Logger;
 
 /**
  * @author huqiu.lhq
@@ -100,7 +101,7 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
   private class RecyclerViewOnScrollListener extends RecyclerView.OnScrollListener {
 
     @Override
-    public void onScrollStateChanged(android.support.v7.widget.RecyclerView recyclerView, int newState) {
+    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
       if (newState == RecyclerView.SCROLL_STATE_IDLE && isScollBottom(recyclerView)) {
         onReachBottom();
       }

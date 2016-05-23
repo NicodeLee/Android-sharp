@@ -4,14 +4,14 @@ ext {
 
 
   android = [compileSdkVersion: 23,
-             buildToolsVersion: "23.0.2",
+             buildToolsVersion: "23.0.3",
              applicationId    : "com.nicodelee.sharp",
              minSdkVersion    : 15,
              targetSdkVersion : 23,
              versionCode      : 1,
              versionName      : "0.5"]
 
-  supportVersion = "23.1.1"
+  supportVersion = "23.4.0"
 
   dependencies = ["com.android.support:design"         : "com.android.support:design:${supportVersion}",
                   "com.android.support:appcompat-v7"   : "com.android.support:appcompat-v7:${supportVersion}",
@@ -22,7 +22,7 @@ ext {
                   "com.jakewharton:butterknife"        : "com.jakewharton:butterknife:7.0.1",
                   "gson"                               : "com.google.code.gson:gson:2.5",
                   "com.nostra13.universalimageloader"  : "com.nostra13.universalimageloader:universal-image-loader:1.9.5",
-                  "fresco"                             : "com.facebook.fresco:fresco:0.9.0+",
+//                  "fresco"                             : "com.facebook.fresco:fresco:0.9.0+",
                   "com.github.chrisbanes.photoview"    : "com.github.chrisbanes.photoview:library:1.2.4",
                   "de.greenrobot.eventbus"             : "de.greenrobot:eventbus:2.4.0",
                   "com.squareup.retrofit"              : "com.squareup.retrofit:retrofit:1.9.0",

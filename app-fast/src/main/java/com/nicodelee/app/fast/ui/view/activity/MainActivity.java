@@ -1,6 +1,7 @@
 package com.nicodelee.app.fast.ui.view.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -24,9 +25,9 @@ public class MainActivity extends BaseActivity implements ViewEventListener<Item
   @Bind(R.id.recycler_view) RecyclerView recyclerView;
   @Bind(R.id.ptr_frameLayout) PtrClassicFrameLayout ptrFrameLayout;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-  }
+  //@Override protected void onCreate(Bundle savedInstanceState) {
+    //super.onCreate(savedInstanceState);
+  //}
 
   @Override protected int getLayoutResId() {
     return R.layout.activity_recyclerview;

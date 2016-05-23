@@ -87,14 +87,13 @@ public abstract class HFAdapter extends RecyclerView.Adapter {
 		// if our position is one of our items (this comes from
 		// getItemViewType(int position) below)
 		if (type != TYPE_HEADER && type != TYPE_FOOTER) {
-			ViewHolder vh = onCreateViewHolderHF(viewGroup, type);
-			return vh;
+			return onCreateViewHolderHF(viewGroup, type);
 			// else we have a header/footer
 		} else {
 			// create a new framelayout, or inflate from a resource
 			FrameLayout frameLayout = new FrameLayout(viewGroup.getContext());
 			// make sure it fills the space
-			frameLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+			frameLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 			return new HeaderFooterViewHolder(frameLayout);
 		}
 	}

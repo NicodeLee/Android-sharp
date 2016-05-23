@@ -16,6 +16,7 @@ import com.nicodelee.common.colours.Colour;
 import com.nicodelee.ptr.header.JdHeader;
 import com.nicodelee.ptr.header.MeituanHeader;
 import com.nicodelee.ptr.header.RentalsSunHeader;
+import com.nicodelee.ptr.header.StickinessHeader;
 import com.nicodelee.ptr.header.WindmillHeader;
 import com.nicodelee.ptr.loadmore.LoadMoreContainer;
 import com.nicodelee.ptr.loadmore.LoadMoreHandler;
@@ -48,6 +49,8 @@ public class PtrHeadActivity extends BaseActivity {
   //private MultiAdapter adapter;
   private int pageNum = 15;
 
+  //new
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
   }
@@ -59,10 +62,11 @@ public class PtrHeadActivity extends BaseActivity {
   @Override protected void initView() {
     //recyclerView.setLayoutManager(new GridLayoutManager(this,2));//Grid列表 ok
     recyclerView.setLayoutManager(new LinearLayoutManager(this));//线性列表 ok
-    //recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));//
+    //recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));//
     List<ItemListMod> itemMods = DataGenerator.generateItemList(pageNum);
     adapter =
         SmartAdapter.items(itemMods).map(ItemListMod.class, DemoListView.class).into(recyclerView);
+
 
     final MeituanHeader header = new MeituanHeader(this);
     ptr.setHeaderView(header);
@@ -124,6 +128,10 @@ public class PtrHeadActivity extends BaseActivity {
       final WindmillHeader header = new WindmillHeader(this);
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
+    }else if (id == R.id.menu_stickiness) {
+      final StickinessHeader header = new StickinessHeader(this);
+      ptr.setHeaderView(header);
+      ptr.addPtrUIHandler(header);
     } else if (id == R.id.menu_defult) {
       final PtrClassicDefaultHeader header = new PtrClassicDefaultHeader(this);
       ptr.setHeaderView(header);
@@ -139,7 +147,7 @@ public class PtrHeadActivity extends BaseActivity {
        * you can add more letters by {@link StoreHousePath#addChar}
        */
       header.initWithString("Loading...");
-      header.setTextColor(Colour.black50PercentColor());
+      header.setTextColor(Colour.tealColor());
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
     } else if (id == R.id.menu_rentalssun) {
@@ -162,4 +170,5 @@ public class PtrHeadActivity extends BaseActivity {
     currentPage = 1;
     viewContainer.loadMoreFinish(false, true);
   }
+
 }

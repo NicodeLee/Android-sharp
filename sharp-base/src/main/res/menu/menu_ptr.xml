@@ -8,7 +8,9 @@
       android:title="京东"/>
 
   <item android:id="@+id/menu_wind"
-      android:title="小风车"/>
+    android:title="小风车"/>
+  <item android:id="@+id/menu_stickiness"
+      android:title="粘性下拉"/>
 
   <item android:id="@+id/menu_defult"
       android:title="默认(美化)"/>

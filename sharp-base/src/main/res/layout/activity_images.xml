@@ -15,32 +15,32 @@
     <!--android:layout_width="100dp"-->
     <!--android:layout_height="100dp"-->
     <!--android:layout_centerInParent="true" />-->
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/main_sdv"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_margin="12dp"
-        fresco:actualImageScaleType="focusCrop"
-        fresco:placeholderImage="@mipmap/icon_placeholder"
-        fresco:placeholderImageScaleType="focusCrop"
-        fresco:progressBarImage="@mipmap/icon_progress_bar"
-        fresco:progressBarImageScaleType="focusCrop"
-        fresco:progressBarAutoRotateInterval="3000"
-        fresco:failureImage="@mipmap/icon_failure"
-        fresco:failureImageScaleType="focusCrop"
-        fresco:retryImage="@mipmap/icon_retry"
-        fresco:retryImageScaleType="focusCrop"
-        fresco:fadeDuration="3000"
-        fresco:backgroundImage="@android:color/holo_orange_light"
-        fresco:roundAsCircle="true"
-        fresco:roundedCornerRadius="30dp"
-        fresco:roundTopLeft="true"
-        fresco:roundTopRight="true"
-        fresco:roundBottomLeft="true"
-        fresco:roundBottomRight="true"
-        fresco:roundingBorderWidth="4dp"
-        fresco:roundingBorderColor="@color/pinkColor"
-    />
+    <!--<com.facebook.drawee.view.SimpleDraweeView-->
+        <!--android:id="@+id/main_sdv"-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="120dp"-->
+        <!--android:layout_margin="12dp"-->
+        <!--fresco:actualImageScaleType="focusCrop"-->
+        <!--fresco:placeholderImage="@mipmap/icon_placeholder"-->
+        <!--fresco:placeholderImageScaleType="focusCrop"-->
+        <!--fresco:progressBarImage="@mipmap/icon_progress_bar"-->
+        <!--fresco:progressBarImageScaleType="focusCrop"-->
+        <!--fresco:progressBarAutoRotateInterval="3000"-->
+        <!--fresco:failureImage="@mipmap/icon_failure"-->
+        <!--fresco:failureImageScaleType="focusCrop"-->
+        <!--fresco:retryImage="@mipmap/icon_retry"-->
+        <!--fresco:retryImageScaleType="focusCrop"-->
+        <!--fresco:fadeDuration="3000"-->
+        <!--fresco:backgroundImage="@android:color/holo_orange_light"-->
+        <!--fresco:roundAsCircle="true"-->
+        <!--fresco:roundedCornerRadius="30dp"-->
+        <!--fresco:roundTopLeft="true"-->
+        <!--fresco:roundTopRight="true"-->
+        <!--fresco:roundBottomLeft="true"-->
+        <!--fresco:roundBottomRight="true"-->
+        <!--fresco:roundingBorderWidth="4dp"-->
+        <!--fresco:roundingBorderColor="@color/pinkColor"-->
+    <!--/>-->
   </com.nicodelee.common.layout.FlowLayout>
 
 
