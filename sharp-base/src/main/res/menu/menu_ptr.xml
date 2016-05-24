@@ -12,6 +12,9 @@
   <item android:id="@+id/menu_stickiness"
       android:title="粘性下拉"/>
 
+  <item android:id="@+id/menu_water_drop"
+      android:title="水滴下拉(IOS QQ)"/>
+
   <item android:id="@+id/menu_defult"
       android:title="默认(美化)"/>
 

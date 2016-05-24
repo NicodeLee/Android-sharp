@@ -18,6 +18,7 @@ import com.nicodelee.ptr.header.MeituanHeader;
 import com.nicodelee.ptr.header.RentalsSunHeader;
 import com.nicodelee.ptr.header.StickinessHeader;
 import com.nicodelee.ptr.header.WindmillHeader;
+import com.nicodelee.ptr.header.waterdrop.WaterDropHeader;
 import com.nicodelee.ptr.loadmore.LoadMoreContainer;
 import com.nicodelee.ptr.loadmore.LoadMoreHandler;
 import com.nicodelee.ptr.loadmore.LoadMoreRecyclerViewContainer;
@@ -132,7 +133,11 @@ public class PtrHeadActivity extends BaseActivity {
       final StickinessHeader header = new StickinessHeader(this);
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
-    } else if (id == R.id.menu_defult) {
+    } else if (id == R.id.menu_water_drop) {
+      final WaterDropHeader header = new WaterDropHeader(this);
+      ptr.setHeaderView(header);
+      ptr.addPtrUIHandler(header);
+    }else if (id == R.id.menu_defult) {
       final PtrClassicDefaultHeader header = new PtrClassicDefaultHeader(this);
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
