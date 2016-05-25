@@ -5,12 +5,16 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Scroller;
 import com.nicodelee.sharp.R;
 import com.nicodelee.util.Logger;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -21,18 +25,19 @@ import in.srain.cube.views.ptr.indicator.PtrIndicator;
  * Created by NocodeLee on 15/12/15.
  * Email：lirizhilirizhi@163.com
  */
-public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
+public class WaterDropHeader extends LinearLayout implements PtrUIHandler {
 
   // 下拉刷新视图（头部视图）
-  private ViewGroup headView;
+  private LinearLayout headView;
 
   private WaterDropView mWaterDropView;
   private ProgressBar mProgressBar;
 
-  private STATE mState = STATE.normal;
   private int stretchHeight;
   private int readyHeight;
   private static final int DISTANCE_BETWEEN_STRETCH_READY = 250;
+  // at bottom, trigger
+  private final static float OFFSET_RADIO = 1.8f; // support iOS like pull
 
   public WaterDropHeader(Context context) {
     this(context, null);
@@ -56,7 +61,7 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
     /**
      * 头部
      */
-    headView = (FrameLayout) inflater.inflate(R.layout.header_waterdrop, this, true);
+    headView = (LinearLayout) inflater.inflate(R.layout.header_waterdrop, this, true);
     mWaterDropView = (WaterDropView) headView.findViewById(R.id.waterdroplist_waterdrop);
     mProgressBar = (ProgressBar) headView.findViewById(R.id.waterdroplist_header_progressbar);
     initHeight();
@@ -79,7 +84,7 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
   private void handleStateNormal() {
     mWaterDropView.setVisibility(View.VISIBLE);
     mProgressBar.setVisibility(View.GONE);
-    //headView.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+    headView.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
   }
 
   /**
@@ -88,7 +93,7 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
   private void handleStateStretch() {
     mWaterDropView.setVisibility(View.VISIBLE);
     mProgressBar.setVisibility(View.GONE);
-    //headView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+    headView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
   }
 
   /**
@@ -101,7 +106,7 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
     shrinkAnimator.addListener(new AnimatorListenerAdapter() {
       @Override public void onAnimationEnd(Animator animation) {
         //回弹结束后即进入refreshing状态
-        updateState(STATE.refreshing);
+        handleStateRefreshing();
       }
     });
     shrinkAnimator.start();//开始回弹
@@ -123,38 +128,9 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
     mProgressBar.setVisibility(View.GONE);
   }
 
-  public enum STATE {
-    normal,//正常
-    stretch,//准备进行拉伸
-    ready,//拉伸到最大位置
-    refreshing,//刷新
-    end//刷新结束，回滚
-  }
-
-  /**
-   * 修改状态。注：状态的改变与前一个状态以及下拉头高度有关
-   */
-  public void updateState(STATE state) {
-    if (state == mState) return;
-    mState = state;
-    switch (mState) {
-      case normal:
-        handleStateNormal();
-        break;
-      case stretch:
-        handleStateStretch();
-        break;
-      case ready:
-        handleStateReady();
-        break;
-      case refreshing:
-        handleStateRefreshing();
-        break;
-      case end:
-        handleStateEnd();
-        break;
-      default:
-    }
+  private void updateHeaderHeight(float delta) {
+    int newHeight = (int) delta + headView.getHeight();
+    setVisiableHeight(newHeight);
   }
 
   public void setVisiableHeight(int height) {
@@ -162,22 +138,24 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
     ViewGroup.LayoutParams lp = headView.getLayoutParams();
     lp.height = height;
     headView.setLayoutParams(lp);
+
     //通知水滴进行更新
-    if (mState == STATE.stretch) {
-      float pullOffset =
-          (float) Utils.mapValueFromRangeToRange(height, stretchHeight, readyHeight, 0, 1);
-      if (pullOffset < 0 || pullOffset > 1) {
-        throw new IllegalArgumentException(
-            "pullOffset should between 0 and 1!" + mState + " " + height);
-      }
-      Logger.e("pullOffset:" + pullOffset);
+    float pullOffset =
+        (float) Utils.mapValueFromRangeToRange(height, stretchHeight, readyHeight, 0, 1);
+    Logger.e(String.format("height:%s,pullOffset:%f", height,pullOffset));
+    if (pullOffset > 0 && pullOffset < 1) {
       mWaterDropView.updateComleteState(pullOffset);
+      invalidate();
     }
   }
+
   //=================================处理下拉逻辑==================================
 
   //重置 View，隐藏忙碌进度条，隐藏箭头 View
   @Override public void onUIReset(PtrFrameLayout frame) {
+    ViewGroup.LayoutParams lp = headView.getLayoutParams();
+    lp.height = dp2px(getContext(),50);
+    headView.setLayoutParams(lp);
     handleStateNormal();
   }
 
@@ -202,28 +180,30 @@ public class WaterDropHeader extends FrameLayout implements PtrUIHandler {
     final int mOffsetToRefresh = frame.getOffsetToRefresh();
     final int currentPos = ptrIndicator.getCurrentPosY();
     final int lastPos = ptrIndicator.getLastPosY();
-    float scale = ptrIndicator.getCurrentPercent();
+    final float offsetY = ptrIndicator.getOffsetY();
 
     if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
       if (getDropStaue(currentPos)) {
-        setVisiableHeight((currentPos));
-        invalidate();
+        updateHeaderHeight(offsetY / OFFSET_RADIO);
+        //invalidate();
       }
     }
 
     if (currentPos < mOffsetToRefresh && lastPos >= mOffsetToRefresh) {
       if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
+        //handleStateStretch();
       }
     } else if (currentPos > mOffsetToRefresh && lastPos <= mOffsetToRefresh) {
       if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
-        if (getDropStaue(currentPos)) handleStateReady();
+        //handleStateReady();
       }
     }
   }
 
+  //=================================处理下拉逻辑==================================
+
   private boolean getDropStaue(int height) {
-    //Logger.e("height:"+height+",mWaterDropView:"+mWaterDropView.getHeight());
-    return height > dp2px(getContext(),80);
+    return height > dp2px(getContext(), 50);
   }
 
   private int dp2px(Context context, int dpValue) {
