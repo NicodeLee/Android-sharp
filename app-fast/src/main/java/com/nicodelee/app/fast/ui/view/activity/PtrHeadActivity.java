@@ -135,6 +135,7 @@ public class PtrHeadActivity extends BaseActivity {
       ptr.addPtrUIHandler(header);
     } else if (id == R.id.menu_water_drop) {
       final WaterDropHeader header = new WaterDropHeader(this);
+      ptr.setOffsetToKeepHeaderWhileLoading(100);
       ptr.setHeaderView(header);
       ptr.addPtrUIHandler(header);
     }else if (id == R.id.menu_defult) {
